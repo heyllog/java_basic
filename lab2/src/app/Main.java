@@ -2,7 +2,7 @@ package app;
 
 import java.util.Date;
 
-class GenericItem {
+class GenericItem implements Cloneable {
     public int ID;
     public String name;
     public float price;
@@ -21,6 +21,11 @@ class GenericItem {
     void printAll() {
         System.out.printf("ID: %-10d Name: %-10s Category: %-10s price:%5.2f\n", ID, name, category, price);
     }
+
+    @Override
+    public GenericItem clone() throws CloneNotSupportedException {
+        return (GenericItem)super.clone();
+    }
 }
 
 class FoodItem extends GenericItem {
@@ -36,7 +41,14 @@ class FoodItem extends GenericItem {
 
     @Override
     void printAll() {
-        System.out.printf("ID: %-10d Name: %-10s Category: %-10s price:%-10.2f Expires: %-10d Date Of Income:%s \n", ID, name, category, price, expires, dateOfIncome);
+        System.out.printf("ID: %-10d Name: %-10s Category: %-10s price:%-10.2f Expires: %-10d Date Of Income:%s \n", ID,
+                name, category, price, expires, dateOfIncome);
+    }
+
+    @Override
+    public FoodItem clone() throws CloneNotSupportedException {
+
+        return (FoodItem)super.clone();
     }
 }
 
@@ -50,7 +62,13 @@ class TechnicalItem extends GenericItem {
 
     @Override
     void printAll() {
-        System.out.printf("ID: %-10d Name: %-10s Category: %-10s price:%-10.2f Warranty: %d\n", ID, name, category, price, warrantyTime);
+        System.out.printf("ID: %-10d Name: %-10s Category: %-10s price:%-10.2f Warranty: %d\n", ID, name, category,
+                price, warrantyTime);
+    }
+
+    @Override
+    public TechnicalItem clone() throws CloneNotSupportedException {
+        return (TechnicalItem)super.clone();
     }
 }
 
@@ -58,7 +76,7 @@ public class Main {
     public static void main(final String[] args) throws Exception {
         // task1
         System.out.println("\n------------------------------------Task1------------------------------\n");
-        GenericItem first = new GenericItem(1, "go", 199.99f);
+        GenericItem first = new GenericItem(1, "java", 199.99f);
         GenericItem second = new GenericItem(10, "python", 199.99999f);
         GenericItem third = new GenericItem(1234, "ruby", 179f);
         first.printAll();
@@ -68,14 +86,22 @@ public class Main {
         // task2
         System.out.println("\n------------------------------------Task2------------------------------\n");
         Date date = new Date();
-        FoodItem food1 = new FoodItem(10, "food1", 123.03f, date, (short)1);
-        FoodItem food2 = new FoodItem(11, "food2", 165.03f, date, (short)4);
-        TechnicalItem tech1 = new TechnicalItem(12, "tech1", 354.1f, (short)100);
-        TechnicalItem tech2 = new TechnicalItem(13, "tech2", 1354.1f, (short)365);
-        GenericItem items [] = {food1, food2, tech1, tech2};
+        FoodItem food1 = new FoodItem(10, "food1", 123.03f, date, (short) 1);
+        FoodItem food2 = new FoodItem(11, "food2", 165.03f, date, (short) 4);
+        TechnicalItem tech1 = new TechnicalItem(12, "tech1", 354.1f, (short) 100);
+        TechnicalItem tech2 = new TechnicalItem(13, "tech2", 1354.1f, (short) 365);
+        GenericItem items[] = { food1, food2, tech1, tech2 };
 
         for (GenericItem genericItem : items) {
             genericItem.printAll();
         }
+
+        // tasks 2-2
+        System.out.println("\n------------------------------------Task2.2----------------------------\n");
+        System.out.println("Food1 == Food2 - " + food1.equals(food2));
+        System.out.println("Food1 == Food1 - " + food1.equals(food1));
+        
+        TechnicalItem tech1_clone = tech1.clone();
+        System.out.println("Tech1 == Tech1_clone - " + tech1.equals(tech1_clone));
     }
 }
