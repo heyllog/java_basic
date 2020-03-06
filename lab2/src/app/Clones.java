@@ -34,6 +34,7 @@ class GenericItem2 implements Cloneable {
 
 public class Clones {
     public static void main(final String[] args) throws Exception {
+        System.out.println("\n------------------------------------Task2.3----------------------------\n");
         GenericItem2 item = new GenericItem2(10, "item", 2141.12f);
         GenericItem2 analogue = new GenericItem2(11, "analogue", 2141.12f);
         item.analogue = analogue;

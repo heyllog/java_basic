@@ -22,6 +22,20 @@ class GenericItem implements Cloneable {
         System.out.printf("ID: %-10d Name: %-10s Category: %-10s price:%5.2f\n", ID, name, category, price);
     }
 
+    public String toString() {
+        return this.name;
+    }
+
+    public Boolean equals(GenericItem item) {
+        if (this.ID == item.ID && 
+            this.name == item.name && 
+            this.price == item.price && 
+            this.category == item.category) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public GenericItem clone() throws CloneNotSupportedException {
         return (GenericItem)super.clone();
@@ -45,9 +59,20 @@ class FoodItem extends GenericItem {
                 name, category, price, expires, dateOfIncome);
     }
 
+    public Boolean equals(FoodItem item) {
+        if (this.ID == item.ID && 
+            this.name == item.name && 
+            this.price == item.price && 
+            this.category == item.category &&
+            this.dateOfIncome == item.dateOfIncome &&
+            this.expires == item.expires) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public FoodItem clone() throws CloneNotSupportedException {
-
         return (FoodItem)super.clone();
     }
 }
@@ -64,6 +89,17 @@ class TechnicalItem extends GenericItem {
     void printAll() {
         System.out.printf("ID: %-10d Name: %-10s Category: %-10s price:%-10.2f Warranty: %d\n", ID, name, category,
                 price, warrantyTime);
+    }
+
+    public Boolean equals(TechnicalItem item) {
+        if (this.ID == item.ID && 
+            this.name == item.name && 
+            this.price == item.price && 
+            this.category == item.category && 
+            this.warrantyTime == item.warrantyTime) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -103,5 +139,7 @@ public class Main {
         
         TechnicalItem tech1_clone = tech1.clone();
         System.out.println("Tech1 == Tech1_clone - " + tech1.equals(tech1_clone));
+
+        System.out.println(food1);
     }
 }
