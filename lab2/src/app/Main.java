@@ -27,18 +27,15 @@ class GenericItem implements Cloneable {
     }
 
     public Boolean equals(GenericItem item) {
-        if (this.ID == item.ID && 
-            this.name == item.name && 
-            this.price == item.price && 
-            this.category == item.category) {
-            return true;
-        }
-        return false;
+        return this.ID == item.ID &&
+                this.name == item.name &&
+                this.price == item.price &&
+                this.category == item.category;
     }
 
     @Override
     public GenericItem clone() throws CloneNotSupportedException {
-        return (GenericItem)super.clone();
+        return (GenericItem) super.clone();
     }
 }
 
@@ -60,20 +57,14 @@ class FoodItem extends GenericItem {
     }
 
     public Boolean equals(FoodItem item) {
-        if (this.ID == item.ID && 
-            this.name == item.name && 
-            this.price == item.price && 
-            this.category == item.category &&
-            this.dateOfIncome == item.dateOfIncome &&
-            this.expires == item.expires) {
-            return true;
-        }
-        return false;
+        return super.equals(item) &&
+                this.dateOfIncome == item.dateOfIncome &&
+                this.expires == item.expires;
     }
 
     @Override
     public FoodItem clone() throws CloneNotSupportedException {
-        return (FoodItem)super.clone();
+        return (FoodItem) super.clone();
     }
 }
 
@@ -92,19 +83,13 @@ class TechnicalItem extends GenericItem {
     }
 
     public Boolean equals(TechnicalItem item) {
-        if (this.ID == item.ID && 
-            this.name == item.name && 
-            this.price == item.price && 
-            this.category == item.category && 
-            this.warrantyTime == item.warrantyTime) {
-            return true;
-        }
-        return false;
+        return super.equals(item) &&
+                this.warrantyTime == item.warrantyTime;
     }
 
     @Override
     public TechnicalItem clone() throws CloneNotSupportedException {
-        return (TechnicalItem)super.clone();
+        return (TechnicalItem) super.clone();
     }
 }
 
@@ -126,7 +111,7 @@ public class Main {
         FoodItem food2 = new FoodItem(11, "food2", 165.03f, date, (short) 4);
         TechnicalItem tech1 = new TechnicalItem(12, "tech1", 354.1f, (short) 100);
         TechnicalItem tech2 = new TechnicalItem(13, "tech2", 1354.1f, (short) 365);
-        GenericItem items[] = { food1, food2, tech1, tech2 };
+        GenericItem[] items = {food1, food2, tech1, tech2};
 
         for (GenericItem genericItem : items) {
             genericItem.printAll();
@@ -136,7 +121,7 @@ public class Main {
         System.out.println("\n------------------------------------Task2.2----------------------------\n");
         System.out.println("Food1 == Food2 - " + food1.equals(food2));
         System.out.println("Food1 == Food1 - " + food1.equals(food1));
-        
+
         TechnicalItem tech1_clone = tech1.clone();
         System.out.println("Tech1 == Tech1_clone - " + tech1.equals(tech1_clone));
 

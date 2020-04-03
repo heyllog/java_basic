@@ -12,7 +12,7 @@ public class Main {
         short v_short = 129;
         char v_char = 'a'; // from a to 'a'
         int v_int = 65999;
-        long v_long = 429496729; // from 4294967296 to 429496729
+        long v_long = 4294967294536l; // from 4294967296 to 429496729
         float v_float = 0.33333334f; // from 0.33333334 to 0.33333334f
         double v_double = 0.3333333333333333;
         boolean v_boolean = true; // from v_double to v_boolean

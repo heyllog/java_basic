@@ -41,5 +41,6 @@ public class Clones {
         System.out.println(item.analogue);
         GenericItem2 item_clone = item.clone();
         System.out.println(item_clone.analogue);
+        
     }
 }
