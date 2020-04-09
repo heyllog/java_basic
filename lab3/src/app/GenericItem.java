@@ -2,30 +2,37 @@ package app;
 
 
 public class GenericItem implements Cloneable {
+    static int currentID = 0;
+
+    public enum Category {
+        FOOD,
+        PRINT,
+        DRESS,
+        GENERAL
+    }
+
     public int ID;
     public String name;
     public float price;
     public Category category = Category.GENERAL;
-    public GenericItem analog;
-
-    public enum Category {
-        FOOD, PRINT, DRESS, GENERAL
-    }
+    public GenericItem analog = null;
 
     public GenericItem(String name, float price, Category category) {
+        this.ID = GenericItem.currentID++;
         this.name = name;
         this.price = price;
         this.category = category;
     }
 
     public GenericItem(String name, float price, GenericItem analog) {
+        this.ID = GenericItem.currentID++;
         this.name = name;
         this.price = price;
         this.analog = analog;
     }
 
     public GenericItem() {
-
+        this.ID = GenericItem.currentID++;
     }
 
     void printAll() {
@@ -35,6 +42,8 @@ public class GenericItem implements Cloneable {
         System.out.println("Name: " + name);
         System.out.println("Category: " + category);
         System.out.println("Price: " + price);
+        if (analog != null)
+            System.out.println("Analogue: " + analog);
     }
 
     public String toString() {

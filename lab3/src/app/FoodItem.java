@@ -7,20 +7,19 @@ public class FoodItem extends GenericItem {
     Date dateOfIncome; // дата производства
     short expires; // срок годности
 
-    public FoodItem(String name, float price, FoodItem analog, Date date, short expires) {
+    public FoodItem(String name, float price, short expires, FoodItem analog, Date dateOfIncome) {
         super(name, price, analog);
         this.category = Category.FOOD;
         this.expires = expires;
-        this.dateOfIncome = date;
+        this.dateOfIncome = dateOfIncome;
     }
 
     public FoodItem(String name, float price, short expires) {
-        super(name, price, Category.FOOD);
-        this.expires = expires;
+        this(name, price, expires, null, new Date());
     }
 
     public FoodItem(String name) {
-
+        this(name, 0.0f, (short) 0, null, new Date());
     }
 
     @Override

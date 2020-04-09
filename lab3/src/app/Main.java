@@ -1,47 +1,56 @@
 package app;
 
 import java.util.Date;
+import java.util.Random;
 
 
 public class Main {
     public static void main(final String[] args) throws Exception {
-        // task1
-        System.out.println("\n------------------------------------Task1------------------------------");
-        GenericItem first = new GenericItem(1, "java", 199.99f);
-        GenericItem second = new GenericItem(10, "python", 199.99999f);
-        GenericItem third = new GenericItem(1234, "ruby", 179f);
+        System.out.println("\n------------------------------------Task1------------------------------\n");
+        GenericItem first = new GenericItem("java", 199.99f, GenericItem.Category.GENERAL);
+        GenericItem second = new GenericItem("python", 199.99999f, first);
+        GenericItem third = new GenericItem();
         first.printAll();
         second.printAll();
         third.printAll();
 
-        // task2
-        System.out.println("\n------------------------------------Task2------------------------------");
         Date date = new Date();
-        FoodItem food1 = new FoodItem(10, "food1", 123.03f, date, (short) 1);
-        FoodItem food2 = new FoodItem(11, "food2", 165.03f, date, (short) 4);
-        TechnicalItem tech1 = new TechnicalItem(12, "tech1", 354.1f, (short) 100);
-        TechnicalItem tech2 = new TechnicalItem(13, "tech2", 1354.1f, (short) 365);
-        GenericItem[] items = {food1, food2, tech1, tech2};
+        FoodItem food1 = new FoodItem("java", 199.99f, (short) 1);
+        FoodItem food2 = new FoodItem("python", 199.99999f, (short) 2, food1, date);
+        FoodItem food3 = new FoodItem("ruby");
+        food1.printAll();
+        food2.printAll();
+        food3.printAll();
 
-        for (GenericItem genericItem : items) {
-            genericItem.printAll();
+        System.out.println("\n------------------------------------Task2------------------------------\n");
+        Integer[] intArr = {10, 20, 15};
+        Float[] floatArr = new Float[5];
+        Random r = new Random();
+        float fMin = 10;
+        float fMax = 20;
+        for (int i = 0; i < floatArr.length; i++) {
+            floatArr[i] = fMin + r.nextFloat() * (fMax - fMin);
         }
 
-        // tasks 2-2
-        System.out.println("\n------------------------------------Task2.2----------------------------\n");
-        System.out.println("Food1 == Food2 - " + food1.equals(food2));
-        System.out.println("Food1 == Food1 - " + food1.equals(food1));
+        WorkArray<Integer> integerWorkArray = new WorkArray<>(intArr);
+        WorkArray<Float> floatWorkArray = new WorkArray<>(floatArr);
 
-        TechnicalItem tech1_clone = tech1.clone();
-        System.out.println("Tech1 == Tech1_clone - " + tech1.equals(tech1_clone));
+        integerWorkArray.printAll();
+        floatWorkArray.printAll();
+        System.out.println(integerWorkArray.sum());
+        System.out.println(floatWorkArray.sum());
 
-        System.out.println(food1);
-//        GenericItem item = new GenericItem(1, "item", 199.99f);
-//        Date date = new Date();
-//        FoodItem food = new FoodItem(2, "food", 165.03f, date, (short) 4);
-//        TechnicalItem tech = new TechnicalItem(3, "tech", 354.1f, (short) 100);
-//        item.printAll();
-//        food.printAll();
-//        tech.printAll();
+//        String[] strArr = {"a", "b", "c"};
+//        WorkArray<String> stringWorkArray = new WorkArray<>(strArr);
+
+        System.out.println("\n------------------------------------Task3------------------------------\n");
+        String line = "Конфеты 'Маска';45;120";
+        String[] lineFields = line.split(";");
+
+        String name = lineFields[0];
+        float price = Float.parseFloat(lineFields[1]);
+        short expires = Short.parseShort(lineFields[2]);
+        FoodItem foodItem = new FoodItem(name, price, expires);
+        foodItem.printAll();
     }
 }
