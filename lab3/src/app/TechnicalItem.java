@@ -1,6 +1,8 @@
 package app;
 
 
+import java.text.SimpleDateFormat;
+
 public class TechnicalItem extends GenericItem {
     short warrantyTime;
 
@@ -10,9 +12,8 @@ public class TechnicalItem extends GenericItem {
     }
 
     @Override
-    void printAll() {
-        super.printAll();
-        System.out.println("Warranty Time: " + warrantyTime);
+    public String toString() {
+        return super.toString() + String.format("Warranty Time: %d", warrantyTime);
     }
 
     public Boolean equals(TechnicalItem item) {

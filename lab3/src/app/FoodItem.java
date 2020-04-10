@@ -1,6 +1,7 @@
 package app;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 
 public class FoodItem extends GenericItem {
@@ -23,10 +24,9 @@ public class FoodItem extends GenericItem {
     }
 
     @Override
-    void printAll() {
-        super.printAll();
-        System.out.println("Expires: " + expires);
-        System.out.println("Date Of Income: " + dateOfIncome);
+    public String toString() {
+        String formatted_date = new SimpleDateFormat("dd.MM.yyyy").format(dateOfIncome);
+        return super.toString() + String.format("Expires: %-6d Date Of Income: %s", expires, formatted_date);
     }
 
     public Boolean equals(FoodItem item) {

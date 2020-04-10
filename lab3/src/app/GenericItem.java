@@ -37,17 +37,22 @@ public class GenericItem implements Cloneable {
 
     void printAll() {
 //        System.out.printf("ID: %-10d Name: %-10s Category: %-10s price:%5.2f\n", ID, name, category, price);
-        System.out.println();
-        System.out.println("ID: " + ID);
-        System.out.println("Name: " + name);
-        System.out.println("Category: " + category);
-        System.out.println("Price: " + price);
-        if (analog != null)
-            System.out.println("Analogue: " + analog);
+//        System.out.println("ID: " + ID);
+//        System.out.println("Name: " + name);
+//        System.out.println("Category: " + category);
+//        System.out.println("Price: " + price);
+//        if (analog != null)
+//            System.out.println("Analogue: " + analog);
+        System.out.println(this.toString());
     }
 
     public String toString() {
-        return this.name;
+        String analog_name = "No analogues";
+        if (analog != null) {
+            analog_name = analog.name;
+        }
+        return String.format("ID: %-6d Name: %-10s Category: %-11s Price: %-10.2f Analogue: %-18s",
+                ID, name, category, price, analog_name);
     }
 
     public Boolean equals(GenericItem item) {
