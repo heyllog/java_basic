@@ -1,13 +1,11 @@
 package app;
 
 
-import java.text.SimpleDateFormat;
-
 public class TechnicalItem extends GenericItem {
     short warrantyTime;
 
-    TechnicalItem(int id, String name, float price, short warrantyTime) {
-
+    TechnicalItem(String name, float price, short warrantyTime) {
+        super(name, price, Category.GENERAL);
         this.warrantyTime = warrantyTime;
     }
 
