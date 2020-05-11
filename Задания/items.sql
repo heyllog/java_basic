@@ -1,5 +1,3 @@
-drop table item;
-
 CREATE TABLE Item
 (
    ITEM_ID     number(10) GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
