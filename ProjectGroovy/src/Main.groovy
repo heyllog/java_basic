@@ -100,13 +100,7 @@ println(minus(20, 5))
 println(divisionMinus(20, 10, 3))
 
 println "\n--------------------------------Task4--------------------------------\n"
-String url = "jdbc:mysql://localhost:3306/mysql" +
-        "?verifyServerCertificate=false" +
-        "&useSSL=false" +
-        "&requireSSL=false" +
-        "&useLegacyDatetimeCode=false" +
-        "&amp" +
-        "&serverTimezone=UTC"
+String url = "jdbc:mysql://localhost/mysql?serverTimezone=Europe/Moscow"
 
 Sql sql = Sql.newInstance(url, "root", "1234", "com.mysql.cj.jdbc.Driver")
 
