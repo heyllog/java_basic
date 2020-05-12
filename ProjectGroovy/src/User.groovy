@@ -12,7 +12,7 @@ class User {
 //        return a + b
     }
 
-    fromBinding(Binding binding) {
+    void fromBinding(Binding binding) {
         if (binding.getVariables().containsKey("id")) this.id = binding.getVariable("id")
         if (binding.getVariables().containsKey("nickname")) this.nickname = binding.getVariable("nickname")
     }
