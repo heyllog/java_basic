@@ -14,7 +14,9 @@ public class JDBCTest {
         System.out.println(dao.searchById(2));
         System.out.println(dao.searchByKeyWord("Seal"));
         System.out.println(dao.searchByKeyWord("9"));
-//        System.out.println(dao.create(new MusicItem(22, "Drive My Car", "The Beatles")));
+        System.out.println(dao.create(new MusicItem(24, "Drive My Car", "The Beatles",
+                "1978-01-01", 21.93f, 21.32f, 1)));
+        System.out.println(dao.searchById(22));
     }
 
     public static void main(String[] args) throws SQLException {
